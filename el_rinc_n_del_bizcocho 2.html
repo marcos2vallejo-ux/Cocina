@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Rincón del Bizcocho - Guía Definitiva</title>
+    <!-- Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter and Playfair Display for a bakery blog feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        bakery: {
+                            50: '#fdf8f6',
+                            100: '#fbe8e3',
+                            200: '#f5d1c8',
+                            300: '#ebb0a1',
+                            400: '#e0836c',
+                            500: '#d15d42',
+                            600: '#b8462b',
+                            700: '#9b3821',
+                            800: '#7f301e',
+                            900: '#692a1d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-pattern {
+            background-color: #fdf8f6;
+            background-image: radial-gradient(#e0836c 0.75px, transparent 0.75px), radial-gradient(#e0836c 0.75px, #fdf8f6 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+    </style>
+</head>
+<body class="bg-bakery-50 text-stone-800 font-sans antialiased selection:bg-bakery-200 selection:text-bakery-900">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-stone-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-bakery-500 flex items-center justify-center text-white shadow-md">
+                    <i class="fa-solid fa-cake-candles text-lg"></i>
+                </div>
+                <span class="font-serif text-2xl font-bold tracking-tight text-stone-900">El Rincón del Bizcocho</span>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-stone-600">
+                <a href="#receta" class="hover:text-bakery-600 transition-colors">Receta Base</a>
+                <a href="#calculadora" class="hover:text-bakery-600 transition-colors">Calculadora</a>
+                <a href="#pasos" class="hover:text-bakery-600 transition-colors">Paso a Paso</a>
+                <a href="#temporizador" class="hover:text-bakery-600 transition-colors">Temporizador</a>
+                <a href="#trucos" class="hover:text-bakery-600 transition-colors">Trucos de Experto</a>
+            </nav>
+            <a href="#calculadora" class="bg-bakery-500 hover:bg-bakery-600 text-white px-5 py-2.5 rounded-full text-sm font-medium shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                ¡Empezar a Hornear!
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-pattern py-16 md:py-24 border-b border-stone-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-bakery-100 text-bakery-800 tracking-wide uppercase">
+                    <i class="fa-solid fa-heart text-bakery-600"></i> Receta Casera Infalible
+                </span>
+                <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-stone-900 tracking-tight leading-tight">
+                    El Bizcocho Esponjoso <span class="text-bakery-600 italic">Perfecto</span>
+                </h1>
+                <p class="text-lg text-stone-600 leading-relaxed">
+                    Aprende el arte de hornear el bizcocho casero tradicional más suave, alto y aromático. Con nuestra guía interactiva, calculadora de porciones y temporizador integrado, te garantizamos el éxito desde el primer intento.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <div class="flex items-center gap-2 text-sm text-stone-700 bg-white px-4 py-2 rounded-xl shadow-xs border border-stone-100">
+                        <i class="fa-regular fa-clock text-bakery-500"></i>
+                        <span>Prep: 15 min</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-stone-700 bg-white px-4 py-2 rounded-xl shadow-xs border border-stone-100">
+                        <i class="fa-solid fa-fire-burner text-bakery-500"></i>
+                        <span>Horno: 40 min</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-stone-700 bg-white px-4 py-2 rounded-xl shadow-xs border border-stone-100">
+                        <i class="fa-solid fa-user-group text-bakery-500"></i>
+                        <span id="badge-porciones">8 Porciones</span>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="absolute -inset-2 bg-gradient-to-r from-bakery-300 to-bakery-500 rounded-3xl blur-lg opacity-30 animate-pulse"></div>
+                <div class="relative bg-white p-3 rounded-3xl shadow-xl border border-stone-100 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80" alt="Bizcocho esponjoso" class="w-full h-80 sm:h-96 object-cover rounded-2xl" onerror="this.src='https://placehold.co/800x600/f5d1c8/7f301e?text=Bizcocho+Casero'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Calculator & Ingredients Section -->
+    <section id="calculadora" class="py-16 md:py-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12 space-y-4">
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900">Calculadora de Ingredientes</h2>
+            <p class="text-stone-600">Selecciona el número de porciones que deseas preparar y ajustaremos automáticamente las cantidades de cada ingrediente.</p>
+            
+            <!-- Portions Selector Controller -->
+            <div class="inline-flex items-center bg-white p-2 rounded-2xl shadow-md border border-stone-200 space-x-4 mt-4">
+                <span class="text-sm font-semibold text-stone-700 pl-3">Porciones:</span>
+                <div class="flex items-center space-x-2">
+                    <button onclick="changePortions(-2)" class="w-9 h-9 rounded-xl bg-bakery-100 text-bakery-800 hover:bg-bakery-200 font-bold transition flex items-center justify-center">-</button>
+                    <span id="portions-display" class="font-bold text-lg text-stone-900 w-8 text-center">8</span>
+                    <button onclick="changePortions(2)" class="w-9 h-9 rounded-xl bg-bakery-100 text-bakery-800 hover:bg-bakery-200 font-bold transition flex items-center justify-center">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Ingredients List Cards -->
+            <div class="lg:col-span-2 bg-white rounded-3xl shadow-lg border border-stone-200 p-6 sm:p-8">
+                <h3 class="font-serif text-2xl font-bold text-stone-900 mb-6 flex items-center gap-3">
+                    <i class="fa-solid fa-basket-shopping text-bakery-500"></i> Ingredientes necesarios
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="ingredients-grid">
+                    <!-- Dynamic ingredient items populated via JS -->
+                </div>
+            </div>
+
+            <!-- Quick Tips Panel -->
+            <div class="bg-gradient-to-br from-bakery-500 to-bakery-700 rounded-3xl shadow-lg text-white p-6 sm:p-8 flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-white backdrop-blur-sm">
+                        <i class="fa-solid fa-lightbulb text-xl"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold">Regla de Oro</h3>
+                    <p class="text-bakery-100 text-sm leading-relaxed">
+                        Todos los ingredientes deben estar a <strong>temperatura ambiente</strong> (especialmente los huevos y la mantequilla/leche) al menos 1 hora antes de empezar. Esto asegura que la mezcla emulsione perfectamente y el bizcocho suba uniforme.
+                    </p>
+                </div>
+                <div class="mt-8 pt-6 border-t border-white/20 flex items-center justify-between text-xs text-bakery-100">
+                    <span>Dificultad: Fácil</span>
+                    <span>Molde ideal: 22-24 cm</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step by Step Guide -->
+    <section id="pasos" class="py-16 md:py-24 bg-white border-y border-stone-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <span class="text-bakery-600 font-semibold uppercase tracking-wider text-xs">Paso a Paso Detallado</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900">El Proceso de Elaboración</h2>
+                <p class="text-stone-600">Sigue esta guía visual cronológica para evitar errores comunes y conseguir una textura suave y esponjosa.</p>
+            </div>
+
+            <div class="space-y-12">
+                <!-- Step 1 -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-bakery-50/50 p-6 sm:p-8 rounded-3xl border border-stone-200/60 shadow-sm">
+                    <div class="md:col-span-5 space-y-4">
+                        <div class="w-10 h-10 rounded-2xl bg-bakery-500 text-white font-bold flex items-center justify-center text-lg shadow-md">1</div>
+                        <h3 class="font-serif text-2xl font-bold text-stone-900">Preparación y Precalentamiento</h3>
+                        <p class="text-stone-600 leading-relaxed">
+                            Precalienta tu horno a <strong>180°C</strong> con calor arriba y abajo (sin ventilador si es posible para que no reseque). Engrasa un molde redondo con mantequilla y espolvorea un poco de harina o usa papel de horno en la base.
+                        </p>
+                        <div class="inline-flex items-center gap-2 text-xs font-semibold text-bakery-700 bg-bakery-100 px-3 py-1 rounded-full">
+                            <i class="fa-solid fa-temperature-three-quarters"></i> 180 °C | Horno estático
+                        </div>
+                    </div>
+                    <div class="md:col-span-7">
+                        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=700&q=80" alt="Precalentar horno" class="w-full h-64 object-cover rounded-2xl shadow-md" onerror="this.src='https://placehold.co/700x400/f5d1c8/7f301e?text=Paso+1'">
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-bakery-50/50 p-6 sm:p-8 rounded-3xl border border-stone-200/60 shadow-sm">
+                    <div class="md:col-span-5 space-y-4 md:order-2">
+                        <div class="w-10 h-10 rounded-2xl bg-bakery-500 text-white font-bold flex items-center justify-center text-lg shadow-md">2</div>
+                        <h3 class="font-serif text-2xl font-bold text-stone-900">Batir Huevos con Azúcar</h3>
+                        <p class="text-stone-600 leading-relaxed">
+                            Bate los huevos junto con el azúcar y la vainilla a velocidad alta durante al menos 5-7 minutos. La mezcla debe volverse pálida, espumosa y triplicar su volumen. Este es el secreto principal para que el bizcocho sea esponjoso sin levadura química excesiva.
+                        </p>
+                        <div class="inline-flex items-center gap-2 text-xs font-semibold text-bakery-700 bg-bakery-100 px-3 py-1 rounded-full">
+                            <i class="fa-solid fa-clock"></i> 5 a 7 minutos de batido intenso
+                        </div>
+                    </div>
+                    <div class="md:col-span-7 md:order-1">
+                        <img src="https://images.unsplash.com/photo-1514517521153-1be72277b32f?auto=format&fit=crop&w=700&q=80" alt="Batir huevos" class="w-full h-64 object-cover rounded-2xl shadow-md" onerror="this.src='https://placehold.co/700x400/f5d1c8/7f301e?text=Paso+2'">
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-bakery-50/50 p-6 sm:p-8 rounded-3xl border border-stone-200/60 shadow-sm">
+                    <div class="md:col-span-5 space-y-4">
+                        <div class="w-10 h-10 rounded-2xl bg-bakery-500 text-white font-bold flex items-center justify-center text-lg shadow-md">3</div>
+                        <h3 class="font-serif text-2xl font-bold text-stone-900">Integrar Grasas y Líquidos</h3>
+                        <p class="text-stone-600 leading-relaxed">
+                            Añade el aceite de girasol (o mantequilla pomada) y la leche en forma de hilo mientras bates a velocidad baja. Solo lo justo para que se integre. Esto aporta la humedad perfecta para que no quede seco.
+                        </p>
+                        <div class="inline-flex items-center gap-2 text-xs font-semibold text-bakery-700 bg-bakery-100 px-3 py-1 rounded-full">
+                            <i class="fa-solid fa-droplet"></i> Velocidad suave y constante
+                        </div>
+                    </div>
+                    <div class="md:col-span-7">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80" alt="Integrar líquidos" class="w-full h-64 object-cover rounded-2xl shadow-md" onerror="this.src='https://placehold.co/700x400/f5d1c8/7f301e?text=Paso+3'">
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-bakery-50/50 p-6 sm:p-8 rounded-3xl border border-stone-200/60 shadow-sm">
+                    <div class="md:col-span-5 space-y-4 md:order-2">
+                        <div class="w-10 h-10 rounded-2xl bg-bakery-500 text-white font-bold flex items-center justify-center text-lg shadow-md">4</div>
+                        <h3 class="font-serif text-2xl font-bold text-stone-900">Tamizar Harina y Levadura</h3>
+                        <p class="text-stone-600 leading-relaxed">
+                            Tamiza la harina junto con la levadura química y la pizca de sal. Incorpórala a la mezcla líquida en 2 o 3 tandas, utilizando una espátula y movimientos envolventes de abajo hacia arriba para no perder el aire ganado con los huevos.
+                        </p>
+                        <div class="inline-flex items-center gap-2 text-xs font-semibold text-bakery-700 bg-bakery-100 px-3 py-1 rounded-full">
+                            <i class="fa-solid fa-hand"></i> Movimientos envolventes (Sin batidora)
+                        </div>
+                    </div>
+                    <div class="md:col-span-7 md:order-1">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=80" alt="Tamizar harina" class="w-full h-64 object-cover rounded-2xl shadow-md" onerror="this.src='https://placehold.co/700x400/f5d1c8/7f301e?text=Paso+4'">
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-bakery-50/50 p-6 sm:p-8 rounded-3xl border border-stone-200/60 shadow-sm">
+                    <div class="md:col-span-5 space-y-4">
+                        <div class="w-10 h-10 rounded-2xl bg-bakery-500 text-white font-bold flex items-center justify-center text-lg shadow-md">5</div>
+                        <h3 class="font-serif text-2xl font-bold text-stone-900">Horneado sin Prisas</h3>
+                        <p class="text-stone-600 leading-relaxed">
+                            Vierte la mezcla en el molde y alisa la superficie. Hornea durante 35-40 minutos. No abras la puerta del horno durante los primeros 30 minutos bajo ningún concepto o el bizcocho se vendrá abajo.
+                        </p>
+                        <div class="inline-flex items-center gap-2 text-xs font-semibold text-bakery-700 bg-bakery-100 px-3 py-1 rounded-full">
+                            <i class="fa-solid fa-ban"></i> ¡No abrir la puerta al principio!
+                        </div>
+                    </div>
+                    <div class="md:col-span-7">
+                        <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=700&q=80" alt="Hornear bizcocho" class="w-full h-64 object-cover rounded-2xl shadow-md" onerror="this.src='https://placehold.co/700x400/f5d1c8/7f301e?text=Paso+5'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Baking Timer Section -->
+    <section id="temporizador" class="py-16 md:py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="bg-white rounded-3xl shadow-xl border border-stone-200 p-8 sm:p-12 relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-60 h-60 bg-bakery-100 rounded-full opacity-50 blur-2xl pointer-events-none"></div>
+            
+            <div class="max-w-xl mx-auto space-y-6 relative z-10">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-bakery-100 text-bakery-800 uppercase tracking-wide">
+                    <i class="fa-solid fa-stopwatch text-bakery-600"></i> Asistente de Horno
+                </span>
+                <h2 class="font-serif text-3xl font-bold text-stone-900">Temporizador de Horneado</h2>
+                <p class="text-stone-600 text-sm">Configura tu cronómetro para vigilar el punto exacto de cocción de tu bizcocho (Recomendado: 40 minutos).</p>
+                
+                <!-- Timer Display -->
+                <div class="py-6">
+                    <div id="timer-display" class="font-serif text-6xl sm:text-7xl font-bold text-stone-900 tracking-wider">
+                        40:00
+                    </div>
+                    <p id="timer-status" class="text-xs font-medium text-stone-500 mt-2 uppercase tracking-widest">Listo para iniciar</p>
+                </div>
+
+                <!-- Timer Controls -->
+                <div class="flex flex-wrap justify-center gap-4 pt-2">
+                    <button onclick="startTimer()" id="btn-start" class="bg-bakery-500 hover:bg-bakery-600 text-white font-medium px-6 py-3 rounded-2xl shadow-md transition flex items-center gap-2">
+                        <i class="fa-solid fa-play"></i> Iniciar (40 min)
+                    </button>
+                    <button onclick="setTimerMinutes(5)" class="bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium px-4 py-3 rounded-2xl transition text-sm">
+                        +5 min extra
+                    </button>
+                    <button onclick="pauseTimer()" class="bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium px-4 py-3 rounded-2xl transition flex items-center gap-2">
+                        <i class="fa-solid fa-pause"></i> Pausar
+                    </button>
+                    <button onclick="resetTimer()" class="bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium px-4 py-3 rounded-2xl transition flex items-center gap-2">
+                        <i class="fa-solid fa-rotate-right"></i> Reiniciar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips & Troubleshooting Section -->
+    <section id="trucos" class="py-16 md:py-24 bg-stone-100/70 border-t border-stone-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <span class="text-bakery-600 font-semibold uppercase tracking-wider text-xs">Secretos de Repostería</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900">¿Por qué baja el bizcocho y cómo evitarlo?</h2>
+                <p class="text-stone-600">Soluciones a los problemas más comunes para que consigas bizcochos perfectos siempre.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Tip 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-200 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-door-closed"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-stone-900">Cambio brusco de temperatura</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">
+                        Si abres la puerta del horno antes de tiempo, el aire frío entra de golpe y la estructura interna, que aún no está cuajada por completo, se contrae y se hunde en el centro.
+                    </p>
+                </div>
+
+                <!-- Tip 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-200 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-scale-unbalanced"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-stone-900">Exceso o defecto de levadura</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">
+                        Demasiada levadura hace que crezca rápido pero colapse después. Poca levadura no le dará fuerza. Respeta siempre las proporciones indicadas en nuestra calculadora.
+                    </p>
+                </div>
+
+                <!-- Tip 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-200 space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-cookie"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-stone-900">Prueba del palillo infalible</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">
+                        Antes de apagar el horno, pincha el centro con un palillo de madera. Si sale completamente limpio o con alguna miga seca adherida, está listo. Si sale húmedo con masa líquida, déjalo 5 minutos más.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-300 py-12 border-t border-stone-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-bakery-500 flex items-center justify-center text-white">
+                    <i class="fa-solid fa-cake-candles text-lg"></i>
+                </div>
+                <span class="font-serif text-xl font-bold text-white">El Rincón del Bizcocho</span>
+            </div>
+            <p class="text-sm text-stone-400">© 2026 - Hecho con amor y harina para todos los amantes de la repostería casera.</p>
+            <div class="flex space-x-4 text-stone-400">
+                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-instagram text-lg"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-pinterest text-lg"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-youtube text-lg"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Base recipe ingredients data for 8 portions
+        const baseIngredients = [
+            { name: "Huevos L", baseAmount: 4, unit: "unidades", icon: "fa-egg" },
+            { name: "Azúcar blanco", baseAmount: 200, unit: "g", icon: "fa-cubes" },
+            { name: "Harina de repostería", baseAmount: 240, unit: "g", icon: "fa-wheat-awn" },
+            { name: "Aceite de girasol suave", baseAmount: 100, unit: "ml", icon: "fa-bottle-droplet" },
+            { name: "Leche entera", baseAmount: 120, unit: "ml", icon: "fa-cow" },
+            { name: "Levadura química (tipo Royal)", baseAmount: 16, unit: "g", icon: "fa-box-archive" },
+            { name: "Esencia de vainilla", baseAmount: 1, unit: "cucharadita", icon: "fa-seedling" },
+            { name: "Pizca de sal", baseAmount: 1, unit: "pizca", icon: "fa-jar" }
+        ];
+
+        let currentPortions = 8;
+
+        // Function to update ingredient amounts based on portions
+        function updateIngredients() {
+            const grid = document.getElementById('ingredients-grid');
+            grid.innerHTML = '';
+
+            const multiplier = currentPortions / 8;
+
+            baseIngredients.forEach(item => {
+                let calculatedAmount;
+                if (item.unit === 'pizca' || item.unit === 'cucharadita') {
+                    calculatedAmount = (item.baseAmount * multiplier).toFixed(1).replace('.0', '');
+                    if (calculatedAmount == 0) calculatedAmount = 1;
+                } else if (item.unit === 'unidades') {
+                    calculatedAmount = Math.round(item.baseAmount * multiplier);
+                } else {
+                    calculatedAmount = Math.round(item.baseAmount * multiplier);
+                }
+
+                const card = document.createElement('div');
+                card.className = "flex items-center p-4 bg-stone-50 rounded-2xl border border-stone-200/70 shadow-2xs hover:bg-white transition";
+                card.innerHTML = `
+                    <div class="w-10 h-10 rounded-xl bg-bakery-100 text-bakery-700 flex items-center justify-center mr-4 shrink-0">
+                        <i class="fa-solid ${item.icon}"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="font-medium text-stone-900 text-sm">${item.name}</h4>
+                        <span class="text-xs text-stone-500 font-semibold">${calculatedAmount} ${item.unit}</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            document.getElementById('portions-display').innerText = currentPortions;
+            document.getElementById('badge-porciones').innerText = `${currentPortions} Porciones`;
+        }
+
+        // Change portions count
+        function changePortions(amount) {
+            currentPortions += amount;
+            if (currentPortions < 2) currentPortions = 2;
+            if (currentPortions > 24) currentPortions = 24;
+            updateIngredients();
+        }
+
+        // Timer Logic
+        let timerSeconds = 40 * 60;
+        let timerInterval = null;
+        let isRunning = false;
+
+        function formatTime(totalSeconds) {
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        function updateTimerDisplay() {
+            document.getElementById('timer-display').innerText = formatTime(timerSeconds);
+        }
+
+        function startTimer() {
+            if (isRunning) return;
+            isRunning = true;
+            document.getElementById('timer-status').innerText = "Horneando en curso...";
+            document.getElementById('timer-status').className = "text-xs font-semibold text-bakery-600 mt-2 uppercase tracking-widest animate-pulse";
+            
+            timerInterval = setInterval(() => {
+                if (timerSeconds > 0) {
+                    timerSeconds--;
+                    updateTimerDisplay();
+                } else {
+                    clearInterval(timerInterval);
+                    isRunning = false;
+                    document.getElementById('timer-status').innerText = "¡Tiempo terminado! ¡Saca tu bizcocho!";
+                    document.getElementById('timer-status').className = "text-xs font-bold text-emerald-600 mt-2 uppercase tracking-widest";
+                }
+            }, 1000);
+        }
+
+        function pauseTimer() {
+            clearInterval(timerInterval);
+            isRunning = false;
+            document.getElementById('timer-status').innerText = "Temporizador pausado";
+            document.getElementById('timer-status').className = "text-xs font-medium text-stone-500 mt-2 uppercase tracking-widest";
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            isRunning = false;
+            timerSeconds = 40 * 60;
+            updateTimerDisplay();
+            document.getElementById('timer-status').innerText = "Listo para iniciar";
+            document.getElementById('timer-status').className = "text-xs font-medium text-stone-500 mt-2 uppercase tracking-widest";
+        }
+
+        function setTimerMinutes(mins) {
+            timerSeconds += mins * 60;
+            updateTimerDisplay();
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            updateIngredients();
+            updateTimerDisplay();
+        };
+    </script>
+</body>
+</html>
